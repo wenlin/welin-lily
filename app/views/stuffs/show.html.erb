@@ -1,0 +1,33 @@
+<p>
+  <b>Subject:</b>
+  <%=h @stuff.subject_id %>
+</p>
+
+<p>
+  <b>Day:</b>
+  <%=h @stuff.day_id %>
+</p>
+
+<p>
+  <b>Sn:</b>
+  <%=h @stuff.sn %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @stuff.name %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%=h @stuff.note %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @stuff.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_stuff_path(@stuff) %> |
+<%= link_to 'Back', stuffs_path %>

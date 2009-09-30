@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  subject_id: 1
+  day_id: 1
+  sn: 1
+  name: MyString
+  note: MyString
+  status: 1
+
+two:
+  subject_id: 1
+  day_id: 1
+  sn: 1
+  name: MyString
+  note: MyString
+  status: 1
