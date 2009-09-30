@@ -1,35 +1,41 @@
-<h1>New stuff</h1>
-
-<% form_for(@stuff) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :subject_id %><br />
-    <%= f.text_field :subject_id %>
-  </p>
-  <p>
-    <%= f.label :day_id %><br />
-    <%= f.text_field :day_id %>
-  </p>
-  <p>
-    <%= f.label :sn %><br />
-    <%= f.text_field :sn %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :note %><br />
-    <%= f.text_field :note %>
-  </p>
-  <p>
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
+<% if !params[:subject] %>
+  <h2>Select a Subject</h2>
+  <p class="shortcuts"><%= link_to '< 返回', stuffs_path %></p>
+  <hr />
+  
+  <ul>
+    <li><%= link_to "1 - 语文", :action => "new", :subject => "1" %></li>
+    <li><%= link_to "2 - 数学", :action => "new", :subject => "2" %></li>
+    <li><%= link_to "3 - 英语", :action => "new", :subject => "3" %></li>
+    <li><%= link_to "4 - 政治", :action => "new", :subject => "4" %></li>
+    <li><%= link_to "5 - 历史", :action => "new", :subject => "5" %></li>
+    <li><%= link_to "6 - 地理", :action => "new", :subject => "6" %></li>
+    <li><%= link_to "0 - 其他", :action => "new", :subject => "0" %></li>
+  </ul>
 <% end %>
 
-<%= link_to 'Back', stuffs_path %>
+<% if params[:subject] %>
+  <h2>New stuff</h2>
+  <span class="shortcuts"><%= link_to '< 返回', stuffs_path %></span>
+  <hr />
+  
+  <% form_for(@stuff) do |f| %>
+    <%= f.error_messages %>
+  
+    <% @stuffs = Stuff.find(:all, :conditions => {:subject_id => params[:subject], :day_id => @days_to_njcee}) %>
+  
+    <%= f.hidden_field :subject_id, :value => params[:subject] %>
+    <%= f.hidden_field :status, :value => 1 %>
+    <%= f.hidden_field :day_id, :value => @days_to_njcee %>
+    <%= f.hidden_field :sn, :value => @stuffs.size + 1 %>
+  
+    <p class="label"><%= f.label :name %></p>
+    <p class="input"><%= f.text_field :name %></p>
+    <p class="label"><%= f.label :note %></p>
+    <p class="input"><%= f.text_field :note %></p>
+  
+    <p class="button"><%= f.submit 'Create' %></p>
+  
+  <% end %>
+
+<% end %>

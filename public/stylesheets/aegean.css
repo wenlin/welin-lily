@@ -1,0 +1,192 @@
+* {
+  padding: 0;
+  margin: 0;
+  font: 14px "Calibri", "Lucida Grande", Verdana, sans-serif;
+}
+
+/*********** Header ***********/
+
+#header {
+  background: #44C7F4;
+  height: 30px;
+}
+
+#header h1 {
+  float: left;
+  margin-left: 4px;
+  line-height: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #E9F9FF;
+  text-shadow: #30ACD6 0 1px 0;
+}
+
+#header span {
+  float: right;
+  margin-right: 8px;
+  padding-top: 8px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+#notice {
+  padding: 2px 0;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  background: #D7F5FF;
+  color: #12B9F5;
+}
+
+/********** Contents **********/
+
+#content {
+  clear: both;
+  margin: 8px;
+}
+
+h2 {
+  margin: 2px 0;
+  float: left;
+  font: 15px "微软雅黑", "Calibri", "Lucida Grande", Verdana, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #999;
+}
+
+.shortcuts, .shortcuts a {
+  float: right;
+  margin: 2px 0;
+  text-decoration: none;
+  font-size: 12px;
+  color: #666;
+}
+
+li {
+  margin-left: 24px;
+  float: left;
+  clear: left;
+  padding: 2px 0;
+  color: #242424;
+}
+
+li.no-id {
+  list-style: none;
+  margin-left: 6px;
+}
+
+li.no-id strong {
+  font-weight: bold;
+  color: #5D5D5D;
+}
+
+/* I put this outside of <li> beacause there is a bug of Opera.
+    More: http://blog.guoshuang.com/?p=3837
+*/
+#inbox .t {
+  float: right;
+  clear: right;
+  margin-right: 6px;
+  padding: 2px 0;
+  color: #CCC;
+}
+
+
+form p {
+  clear: both;
+  margin: 6px 0px;
+}
+
+form p.button {
+  padding: 8px 0;
+  text-align: right;
+}
+
+form p.label {
+  padding-top: 6px;
+}
+
+form p.input {
+  text-align: center;
+}
+
+form p.input input {
+  padding-left: 2px;
+  height: 24px;
+  width: 99%;
+}
+
+form p.button input {
+  width: 96px;
+  height: 32px;
+}
+
+
+
+
+
+#focus {
+  text-align: center;
+}
+
+#focus .title {
+  margin: 8px 0;
+  font: 24px "微软雅黑", "黑体", Verdana, sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  color: #666;
+}
+
+#focus .description {
+  margin: 6px 0;
+  padding: 2px 0;
+  color: #666;
+}
+
+#focus .meta {
+  margin: 6px 0;
+  padding: 4px 0;
+  text-align: center;
+  font-size: 12px;
+  color: #CCC;
+}
+
+#nav {
+  clear: both;
+  padding: 2px 0;
+  border-top: 1px solid #EAEAEA;
+  border-bottom: 1px solid #EAEAEA;
+  text-align: center;
+  margin: 4px 0px -4px 0px;
+}
+
+a {
+  padding: 0 8px;
+  text-decoration: none;
+  font-size: 12px;
+  color: #666;
+}
+
+#footer {
+  padding: 6px;
+  color: #999;
+  font-size: 14px;
+}
+
+.date {
+  float: left;
+}
+
+.time {
+  float: right;
+}
+/******* Miscellaneous *******/
+
+hr {
+  clear: both;
+  padding: 2px 0;
+  margin-bottom: 6px;
+  border: none;
+  border-bottom: 1px solid #EAEAEA;
+}

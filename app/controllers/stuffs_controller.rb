@@ -14,6 +14,13 @@ class StuffsController < ApplicationController
   # GET /stuffs/1.xml
   def show
     @stuff = Stuff.find(params[:id])
+    if @stuff.status == 1
+      @status = "活动"
+    elsif @stuff.status == 0
+      @status = "已归档"
+    elsif @stuff.status == -1
+      @status = "未归档"
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +32,7 @@ class StuffsController < ApplicationController
   # GET /stuffs/new.xml
   def new
     @stuff = Stuff.new
+    @days_to_njcee = (DateTime.new(2010, 6, 7) - DateTime.now).to_i
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +52,7 @@ class StuffsController < ApplicationController
 
     respond_to do |format|
       if @stuff.save
-        flash[:notice] = 'Stuff was successfully created.'
+        flash[:notice] = '创建成功'
         format.html { redirect_to(@stuff) }
         format.xml  { render :xml => @stuff, :status => :created, :location => @stuff }
       else
@@ -61,7 +69,7 @@ class StuffsController < ApplicationController
 
     respond_to do |format|
       if @stuff.update_attributes(params[:stuff])
-        flash[:notice] = 'Stuff was successfully updated.'
+        flash[:notice] = '修改成功'
         format.html { redirect_to(@stuff) }
         format.xml  { head :ok }
       else

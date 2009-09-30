@@ -1,30 +1,10 @@
-<h1>Listing stuffs</h1>
+<h2>Listing stuffs</h2>
+<p class="shortcuts"><%= link_to '新建', new_stuff_path %></p>
+<hr />
 
-<table>
-  <tr>
-    <th>Subject</th>
-    <th>Day</th>
-    <th>Sn</th>
-    <th>Name</th>
-    <th>Note</th>
-    <th>Status</th>
-  </tr>
-
-<% @stuffs.each do |stuff| %>
-  <tr>
-    <td><%=h stuff.subject_id %></td>
-    <td><%=h stuff.day_id %></td>
-    <td><%=h stuff.sn %></td>
-    <td><%=h stuff.name %></td>
-    <td><%=h stuff.note %></td>
-    <td><%=h stuff.status %></td>
-    <td><%= link_to 'Show', stuff %></td>
-    <td><%= link_to 'Edit', edit_stuff_path(stuff) %></td>
-    <td><%= link_to 'Destroy', stuff, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<ol>
+<% @stuffs.each do |s| %>
+  <li class="no-id"><strong>1<%=h s.subject_id %><%=h s.day_id %><%=h s.sn %></strong><%= link_to s.name, s %></li>
 <% end %>
-</table>
+</ol>
 
-<br />
-
-<%= link_to 'New stuff', new_stuff_path %>

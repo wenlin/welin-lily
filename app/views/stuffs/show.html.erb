@@ -1,33 +1,19 @@
-<p>
-  <b>Subject:</b>
-  <%=h @stuff.subject_id %>
-</p>
+<h2>Stuff #1<%=h @stuff.subject_id %><%=h @stuff.day_id %><%=h @stuff.sn %></h2>
+<p class="shortcuts"><%= link_to '< 返回', stuffs_path %></p>
+<hr />
 
-<p>
-  <b>Day:</b>
-  <%=h @stuff.day_id %>
-</p>
+<div id="focus">
+  <p class="title"><%=h @stuff.name %></p>
+  <p class="description"><%=h @stuff.note %></p>
+  <p class="meta"><%= @status %> / <%= @stuff.created_at.strftime("%Y 年 %m 月 %d 日") %></p>
+</div>
 
-<p>
-  <b>Sn:</b>
-  <%=h @stuff.sn %>
-</p>
+<div id="nav">
+<%= link_to '编辑', edit_stuff_path(@stuff) %> · 
+<% if @stuff.status == 1 or  @stuff.status == -1 %>
+<a href="#">添加错题</a> · 
+<a href="#">归档</a>
+<% end %>
+<% if @stuff.status == 0 %><a href="#">激活</a><% end %>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%=h @stuff.name %>
-</p>
-
-<p>
-  <b>Note:</b>
-  <%=h @stuff.note %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%=h @stuff.status %>
-</p>
-
-
-<%= link_to 'Edit', edit_stuff_path(@stuff) %> |
-<%= link_to 'Back', stuffs_path %>

@@ -1,36 +1,20 @@
-<h1>Editing stuff</h1>
+<h2>Editing stuff #1<%=h @stuff.subject_id %><%=h @stuff.day_id %><%=h @stuff.sn %></h2>
+<p class="shortcuts"><%= link_to '< 返回', @stuff %></p>
+<hr />
 
 <% form_for(@stuff) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :subject_id %><br />
-    <%= f.text_field :subject_id %>
-  </p>
-  <p>
-    <%= f.label :day_id %><br />
-    <%= f.text_field :day_id %>
-  </p>
-  <p>
-    <%= f.label :sn %><br />
-    <%= f.text_field :sn %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :note %><br />
-    <%= f.text_field :note %>
-  </p>
-  <p>
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
 
-<%= link_to 'Show', @stuff %> |
-<%= link_to 'Back', stuffs_path %>
+    <%= f.hidden_field :subject_id %>
+    <%= f.hidden_field :day_id %>
+    <%= f.hidden_field :sn %>
+    <%= f.hidden_field :status %>
+
+  <p class="label"><%= f.label :name %></p>
+  <p class="input"><%= f.text_field :name %></p>
+  <p class="label"><%= f.label :note %></p>
+  <p class="input"><%= f.text_field :note %></p>
+
+  <p class="button"><%= f.submit 'Update' %></p>
+<% end %>
