@@ -12,8 +12,10 @@
 <%= link_to '编辑', edit_stuff_path(@stuff) %> · 
 <% if @stuff.status == 1 or  @stuff.status == -1 %>
 <a href="#">添加错题</a> · 
-<a href="#">归档</a>
+<%= link_to "归档", :action => "archive", :id => @stuff %>
 <% end %>
-<% if @stuff.status == 0 %><a href="#">激活</a><% end %>
+<% if @stuff.status == 0 %>
+<%= link_to "激活", :action => "activate", :id => @stuff %>
+<% end %>
 </div>
 

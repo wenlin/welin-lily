@@ -62,6 +62,18 @@ class StuffsController < ApplicationController
     end
   end
 
+  # POST /stuffs
+  # POST /stuffs.xml
+  def archive
+    @stuff = Stuff.find(params[:id])
+  end
+
+  # POST /stuffs
+  # POST /stuffs.xml
+  def activate
+    @stuff = Stuff.find(params[:id])
+  end
+
   # PUT /stuffs/1
   # PUT /stuffs/1.xml
   def update
