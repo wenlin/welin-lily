@@ -1,5 +1,5 @@
 <h2>Stuff #1<%=h @stuff.subject_id %><%=h @stuff.day_id %><%=h @stuff.sn %></h2>
-<p class="shortcuts"><%= link_to '< 返回', stuffs_path %></p>
+<p class="shortcuts"><a href="#">相关错题</a></p>
 <hr />
 
 <div id="focus">
@@ -9,13 +9,13 @@
 </div>
 
 <div id="nav">
-<%= link_to '编辑', edit_stuff_path(@stuff) %> · 
 <% if @stuff.status == 1 or  @stuff.status == -1 %>
-<a href="#">添加错题</a> · 
+<%= link_to '编辑', edit_stuff_path(@stuff) %> · 
 <%= link_to "归档", :action => "archive", :id => @stuff %>
 <% end %>
 <% if @stuff.status == 0 %>
-<%= link_to "激活", :action => "activate", :id => @stuff %>
+<%= link_to "激活", :action => "activate", :id => @stuff %> · 
+<%= link_to '删除', @stuff, :method => :delete %>
 <% end %>
 </div>
 
