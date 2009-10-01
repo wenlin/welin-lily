@@ -3,7 +3,7 @@
   <p class="shortcuts"><%= link_to '< 返回', stuffs_path %></p>
   <hr />
   
-  <ul>
+  <ul class="menu">
     <li><%= link_to "1 - 语文", :action => "new", :subject => "1" %></li>
     <li><%= link_to "2 - 数学", :action => "new", :subject => "2" %></li>
     <li><%= link_to "3 - 英语", :action => "new", :subject => "3" %></li>
@@ -29,12 +29,15 @@
     <%= f.hidden_field :day_id, :value => @days_to_njcee %>
     <%= f.hidden_field :sn, :value => @stuffs.size + 1 %>
   
-    <p class="label"><%= f.label :name %></p>
-    <p class="input"><%= f.text_field :name %></p>
-    <p class="label"><%= f.label :note %></p>
-    <p class="input"><%= f.text_field :note %></p>
-  
-    <p class="button"><%= f.submit 'Create' %></p>
+      <p>
+        <%= f.label :name %>
+        <%= f.text_field :name ,:class => "text-field" %>
+      </p>
+      <p>
+        <%= f.label :note %>
+        <%= f.text_field :note ,:class => "text-field" %>
+      </p>
+      <%= f.submit 'Create' ,:class => "button" %>
   
   <% end %>
 

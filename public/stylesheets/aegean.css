@@ -13,8 +13,7 @@
 
 #header h1 {
   float: left;
-  margin-left: 4px;
-  line-height: 30px;
+  margin: 4px 0 0 4px;
   font-size: 20px;
   font-weight: bold;
   color: #E9F9FF;
@@ -24,7 +23,7 @@
 #header span {
   float: right;
   margin-right: 8px;
-  padding-top: 8px;
+  padding-top: 9px;
   font-size: 14px;
   letter-spacing: 1px;
   color: #fff;
@@ -47,7 +46,7 @@
 }
 
 h2 {
-  margin: 2px 0;
+
   float: left;
   font: 15px "微软雅黑", "Calibri", "Lucida Grande", Verdana, sans-serif;
   font-weight: bold;
@@ -57,7 +56,7 @@ h2 {
 
 .shortcuts, .shortcuts a {
   float: right;
-  margin: 2px 0;
+  padding-top: 1px;
   text-decoration: none;
   font-size: 12px;
   color: #666;
@@ -92,34 +91,38 @@ li.no-id strong {
   color: #CCC;
 }
 
+.menu li a {
+  padding: 4px 0;
+  font-size: 14px;
+  display: block;
+}
 
 form p {
-  clear: both;
   margin: 6px 0px;
-}
-
-form p.button {
-  padding: 8px 0;
-  text-align: right;
-}
-
-form p.label {
-  padding-top: 6px;
-}
-
-form p.input {
+  padding-top: 4px;
   text-align: center;
 }
 
-form p.input input {
-  padding-left: 2px;
+label {
+  float: left;
+  padding: 2px 0 4px 1px;
+}
+
+input.text-field, input.textarea {
+  border: 1px solid #ABADB3;
+}
+
+input.text-field {
+  padding: 2px;
   height: 24px;
   width: 99%;
 }
 
-form p.button input {
+input.button {
   width: 96px;
   height: 32px;
+  margin: 8px 0;
+  float: right;
 }
 
 

@@ -1,4 +1,4 @@
-<h2>Activating stuff #1<%=h @stuff.subject_id %><%=h @stuff.day_id %><%=h @stuff.sn %></h2>
+<h2>Activating stuff</h2>
 <p class="shortcuts"><%= link_to '< 返回', @stuff %></p>
 <hr />
 
@@ -13,5 +13,5 @@
   <%= f.hidden_field :status, :value => 1 %>
 
   <p>你确定要激活 #1<%=h @stuff.subject_id %><%=h @stuff.day_id %><%=h @stuff.sn %> 吗？</p>
-  <p class="button"><%= f.submit 'Confirm' %></p>
+  <%= f.submit 'Confirm' ,:class => "button" %>
 <% end %>
