@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  note: MyString
+  p_first: 1
+  p_last: 1
+  t_first: 1
+  t_last: 1
+  n: 1
+  m: 1
+
+two:
+  name: MyString
+  note: MyString
+  p_first: 1
+  p_last: 1
+  t_first: 1
+  t_last: 1
+  n: 1
+  m: 1

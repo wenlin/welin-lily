@@ -1,0 +1,43 @@
+<p>
+  <b>Name:</b>
+  <%=h @memo.name %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%=h @memo.note %>
+</p>
+
+<p>
+  <b>P first:</b>
+  <%=h @memo.p_first %>
+</p>
+
+<p>
+  <b>P last:</b>
+  <%=h @memo.p_last %>
+</p>
+
+<p>
+  <b>T first:</b>
+  <%=h @memo.t_first %>
+</p>
+
+<p>
+  <b>T last:</b>
+  <%=h @memo.t_last %>
+</p>
+
+<p>
+  <b>N:</b>
+  <%=h @memo.n %>
+</p>
+
+<p>
+  <b>M:</b>
+  <%=h @memo.m %>
+</p>
+
+
+<%= link_to 'Edit', edit_memo_path(@memo) %> |
+<%= link_to 'Back', memos_path %>

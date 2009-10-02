@@ -9,7 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090930092440) do
+ActiveRecord::Schema.define(:version => 20091002072706) do
+
+  create_table "memos", :force => true do |t|
+    t.string   "name"
+    t.string   "note"
+    t.integer  "p_first"
+    t.integer  "p_last"
+    t.integer  "t_first"
+    t.integer  "t_last"
+    t.integer  "m"
+    t.integer  "n"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "stuffs", :force => true do |t|
     t.integer  "subject_id"

@@ -1,0 +1,44 @@
+<h1>Editing memo</h1>
+
+<% form_for(@memo) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :note %><br />
+    <%= f.text_field :note %>
+  </p>
+  <p>
+    <%= f.label :p_first %><br />
+    <%= f.text_field :p_first %>
+  </p>
+  <p>
+    <%= f.label :p_last %><br />
+    <%= f.text_field :p_last %>
+  </p>
+  <p>
+    <%= f.label :t_first %><br />
+    <%= f.text_field :t_first %>
+  </p>
+  <p>
+    <%= f.label :t_last %><br />
+    <%= f.text_field :t_last %>
+  </p>
+  <p>
+    <%= f.label :n %><br />
+    <%= f.text_field :n %>
+  </p>
+  <p>
+    <%= f.label :m %><br />
+    <%= f.text_field :m %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @memo %> |
+<%= link_to 'Back', memos_path %>
