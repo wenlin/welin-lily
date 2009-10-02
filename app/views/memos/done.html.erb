@@ -1,0 +1,79 @@
+<h2>Done!</h2>
+<p class="shortcuts"><%= link_to '< 返回', @memo %></p>
+<hr />
+
+<% if @memo.t_first == nil && @memo.n == 0 %>
+
+  <% form_for(@memo) do |f| %>
+  <p>这是你第一次完成这一复习，请输入你复习时间。</p>
+
+    <%= f.error_messages %>
+
+    <%= f.hidden_field :p_next, :value => @p_current + 1 %>
+    <%= f.hidden_field :n, :value => @memo.n + 1 %>
+  
+    <%= f.text_field :t_first, :class => "text-field" %>
+  
+    <%= f.submit 'Done!' , :class => "button" %>
+  <% end %>
+<% end %>
+
+<% if @memo.n > 0 and @memo.n < 3 %>
+
+  <% form_for(@memo) do |f| %>
+
+    <% @p_next = @p_current + 1 %>
+    <% @t_next = @memo.t_first * 0.8 ** (@memo.n + 1) %>
+
+    <p>下次时间： <%= @p_next %>, 下次时长： <%= @t_next %></p>
+
+    <%= f.error_messages %>
+    
+    <%= f.hidden_field :n, :value => @memo.n + 1 %>
+    
+    <%= f.hidden_field :p_next, :value => @p_next %>
+    <%= f.hidden_field :t_next, :value => @t_next %>
+
+    <%= f.submit 'Done!' , :class => "button" %>
+  <% end %>
+<% end %>
+
+<% if @memo.n > 2 and @memo.n < 8 %>
+
+  <% form_for(@memo) do |f| %>
+
+    <% @p_next = @p_current + @memo.n + 1 %>
+    <% @t_next = @memo.t_first * 0.64 * 0.6 ** (@memo.n - 2) %>
+
+    <p>下次时间： <%= @p_next %>, 下次时长： <%= @t_next %></p>
+
+    <%= f.error_messages %>
+
+    <%= f.hidden_field :n, :value => @memo.n + 1 %>
+
+    <%= f.hidden_field :p_next, :value => @p_next %>
+    <%= f.hidden_field :t_next, :value => @t_next %>
+
+    <%= f.submit 'Done!' , :class => "button" %>
+  <% end %>
+<% end %>
+
+<% if @memo.n > 7 %>
+
+  <% form_for(@memo) do |f| %>
+
+    <% @p_next = @p_current + 24 * (@memo.n - 7) + 1 %>
+    <% @t_next = @memo.t_first * 0.6 ** (@memo.n - 7) %>
+
+    <p>下次时间： <%= @p_next %>, 下次时长： <%= @t_next %></p>
+
+    <%= f.error_messages %>
+
+    <%= f.hidden_field :n, :value => @memo.n + 1 %>
+
+    <%= f.hidden_field :p_next, :value => @p_next %>
+    <%= f.hidden_field :t_next, :value => @t_next %>
+
+    <%= f.submit 'Done!' , :class => "button" %>
+  <% end %>
+<% end %>

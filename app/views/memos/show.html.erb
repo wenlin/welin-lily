@@ -1,43 +1,24 @@
-<p>
-  <b>Name:</b>
-  <%=h @memo.name %>
-</p>
+<h2>Mnemosyne</h2>
+<span class="shortcuts"><%= link_to '< 返回', memos_path %></span>
+<hr />
 
-<p>
-  <b>Note:</b>
-  <%=h @memo.note %>
-</p>
+<div id="focus">
+  <p class="title"><%=h @memo.name %></p>
+  <p class="description"><%=h @memo.note %></p>
+  <p class="meta">
+  <% if  @memo.t_first == nil && @memo.n == 0 %>
+  这是首次复习，请注意计时
+  <% elsif @memo.n == 1 %>
+  这是第 <%=h @memo.m %> 轮 总第 <%=h @memo.n + 1 %> 次复习 / 建议用时： <%=h @memo.t_first * 0.8 %> 分钟
+  <% else %>
+  这是第 <%=h @memo.m %> 轮 总第 <%=h @memo.n + 1 %> 次复习 / 建议用时： <%=h @memo.t_next %> 分钟
+  <% end %>
+  </p>
+</div>
 
-<p>
-  <b>P first:</b>
-  <%=h @memo.p_first %>
-</p>
+<div id="nav">
+<%= link_to '删除', @memo, :method => :delete %> · 
+<%= link_to "完成", :action => "done", :id => @memo %> · 
+<%= link_to '编辑', edit_memo_path(@memo) %>
 
-<p>
-  <b>P last:</b>
-  <%=h @memo.p_last %>
-</p>
-
-<p>
-  <b>T first:</b>
-  <%=h @memo.t_first %>
-</p>
-
-<p>
-  <b>T last:</b>
-  <%=h @memo.t_last %>
-</p>
-
-<p>
-  <b>N:</b>
-  <%=h @memo.n %>
-</p>
-
-<p>
-  <b>M:</b>
-  <%=h @memo.m %>
-</p>
-
-
-<%= link_to 'Edit', edit_memo_path(@memo) %> |
-<%= link_to 'Back', memos_path %>
+</div>

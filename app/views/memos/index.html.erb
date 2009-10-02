@@ -1,34 +1,14 @@
-<h1>Listing memos</h1>
+<h2>Mnemosyne <%= @p_current %></h2>
+<p class="shortcuts"><%= link_to '新建', new_memo_path %></p>
+<hr />
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Note</th>
-    <th>P first</th>
-    <th>P last</th>
-    <th>T first</th>
-    <th>T last</th>
-    <th>N</th>
-    <th>M</th>
-  </tr>
-
-<% @memos.each do |memo| %>
-  <tr>
-    <td><%=h memo.name %></td>
-    <td><%=h memo.note %></td>
-    <td><%=h memo.p_first %></td>
-    <td><%=h memo.p_last %></td>
-    <td><%=h memo.t_first %></td>
-    <td><%=h memo.t_last %></td>
-    <td><%=h memo.n %></td>
-    <td><%=h memo.m %></td>
-    <td><%= link_to 'Show', memo %></td>
-    <td><%= link_to 'Edit', edit_memo_path(memo) %></td>
-    <td><%= link_to 'Destroy', memo, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<ol>
+<% @memos.each do |m| %>
+  <li><%= link_to m.name, m %></li>
+  <% if m.t_next == nil %>
+  <span class="t">N/A 分钟</span>
+  <% else %>
+  <span class="t"><%= m.t_next %> 分钟</span>
+  <% end %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New memo', new_memo_path %>
+</ol>

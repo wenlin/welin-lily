@@ -83,7 +83,7 @@ li.no-id strong {
 /* I put this outside of <li> beacause there is a bug of Opera.
     More: http://blog.guoshuang.com/?p=3837
 */
-#inbox .t {
+.t {
   float: right;
   clear: right;
   margin-right: 6px;
@@ -91,9 +91,12 @@ li.no-id strong {
   color: #CCC;
 }
 
+li a {
+  font-size: 14px;
+}
+
 .menu li a {
   padding: 4px 0;
-  font-size: 14px;
   display: block;
 }
 

@@ -9,15 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091002072706) do
+ActiveRecord::Schema.define(:version => 20091002112556) do
 
   create_table "memos", :force => true do |t|
     t.string   "name"
     t.string   "note"
     t.integer  "p_first"
-    t.integer  "p_last"
+    t.integer  "p_next"
     t.integer  "t_first"
-    t.integer  "t_last"
+    t.decimal  "t_next",     :precision => 3, :scale => 1
     t.integer  "m"
     t.integer  "n"
     t.datetime "created_at"

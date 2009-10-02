@@ -1,43 +1,24 @@
-<h1>New memo</h1>
+<h2>New memo</h2>
+<span class="shortcuts"><%= link_to '< 返回', memos_path %></span>
+<hr />
 
 <% form_for(@memo) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :note %><br />
-    <%= f.text_field :note %>
-  </p>
-  <p>
-    <%= f.label :p_first %><br />
-    <%= f.text_field :p_first %>
-  </p>
-  <p>
-    <%= f.label :p_last %><br />
-    <%= f.text_field :p_last %>
-  </p>
-  <p>
-    <%= f.label :t_first %><br />
-    <%= f.text_field :t_first %>
-  </p>
-  <p>
-    <%= f.label :t_last %><br />
-    <%= f.text_field :t_last %>
-  </p>
-  <p>
-    <%= f.label :n %><br />
-    <%= f.text_field :n %>
-  </p>
-  <p>
-    <%= f.label :m %><br />
-    <%= f.text_field :m %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
+  <%= f.hidden_field :p_first, :value => @p_current %>
+  <%= f.hidden_field :p_next, :value => @p_current %>
+  <%= f.hidden_field :m, :value => 1 %>
+  <%= f.hidden_field :n, :value => 0 %>
 
-<%= link_to 'Back', memos_path %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name ,:class => "text-field" %>
+  </p>
+  <p>
+    <%= f.label :note %>
+    <%= f.text_field :note ,:class => "text-field" %>
+  </p>
+
+  <%= f.submit 'Create' ,:class => "button" %>
+
+<% end %>
