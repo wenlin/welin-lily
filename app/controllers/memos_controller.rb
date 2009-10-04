@@ -6,11 +6,11 @@ class MemosController < ApplicationController
     t = Time.now
     if t.hour < 6
       @p_current = ( 300 - @days_to_njcee) * 3
-    elsif t.hour > 6 and t.hour < 12
+    elsif t.hour >= 6 and t.hour < 12
       @p_current = ( 300 - @days_to_njcee) * 3 + 1
-    elsif t.hour > 12 and t.hour < 18
+    elsif t.hour >= 12 and t.hour < 18
       @p_current = ( 300 - @days_to_njcee) * 3 + 2 
-    elsif t.hour > 18
+    elsif t.hour >= 18
       @p_current = ( 300 - @days_to_njcee) * 3 + 3
     end
 
@@ -31,11 +31,11 @@ class MemosController < ApplicationController
     t = Time.now
     if t.hour < 6
       @p_current = ( 300 - @days_to_njcee) * 3
-    elsif t.hour > 6 and t.hour < 12
+    elsif t.hour >= 6 and t.hour < 12
       @p_current = ( 300 - @days_to_njcee) * 3 + 1
-    elsif t.hour > 12 and t.hour < 18
+    elsif t.hour >= 12 and t.hour < 18
       @p_current = ( 300 - @days_to_njcee) * 3 + 2 
-    elsif t.hour > 18
+    elsif t.hour >= 18
       @p_current = ( 300 - @days_to_njcee) * 3 + 3
     end
 
@@ -54,11 +54,11 @@ class MemosController < ApplicationController
     t = Time.now
     if t.hour < 6
       @p_current = ( 300 - @days_to_njcee) * 3
-    elsif t.hour > 6 and t.hour < 12
+    elsif t.hour >= 6 and t.hour < 12
       @p_current = ( 300 - @days_to_njcee) * 3 + 1
-    elsif t.hour > 12 and t.hour < 18
+    elsif t.hour >= 12 and t.hour < 18
       @p_current = ( 300 - @days_to_njcee) * 3 + 2 
-    elsif t.hour > 18
+    elsif t.hour >= 18
       @p_current = ( 300 - @days_to_njcee) * 3 + 3
     end
 
@@ -80,11 +80,11 @@ class MemosController < ApplicationController
     t = Time.now
     if t.hour < 6
       @p_current = ( 300 - @days_to_njcee) * 3
-    elsif t.hour > 6 and t.hour < 12
+    elsif t.hour >= 6 and t.hour < 12
       @p_current = ( 300 - @days_to_njcee) * 3 + 1
-    elsif t.hour > 12 and t.hour < 18
+    elsif t.hour >= 12 and t.hour < 18
       @p_current = ( 300 - @days_to_njcee) * 3 + 2 
-    elsif t.hour > 18
+    elsif t.hour >= 18
       @p_current = ( 300 - @days_to_njcee) * 3 + 3
     end
 
