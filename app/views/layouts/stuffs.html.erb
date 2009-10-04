@@ -9,7 +9,7 @@
 <body> 
 <div id="header">
   <h1>Project Athens</h1> 
-  <span><%= days_to_njcee = (DateTime.new(2010, 6, 7) - DateTime.now).to_i %></span>
+  <span><%= get_days_to_njcee() %></span>
 </div>
 <p id="notice"><%= flash[:notice] %></p>
 <div id="content">

@@ -2,17 +2,8 @@ class MemosController < ApplicationController
   # GET /memos
   # GET /memos.xml
   def index
-    @days_to_njcee = (DateTime.new(2010, 6, 7) - DateTime.now).to_i
-    t = Time.now
-    if t.hour < 6
-      @p_current = ( 300 - @days_to_njcee) * 3
-    elsif t.hour >= 6 and t.hour < 12
-      @p_current = ( 300 - @days_to_njcee) * 3 + 1
-    elsif t.hour >= 12 and t.hour < 18
-      @p_current = ( 300 - @days_to_njcee) * 3 + 2 
-    elsif t.hour >= 18
-      @p_current = ( 300 - @days_to_njcee) * 3 + 3
-    end
+  
+    @p_current = get_p_current()
 
     @memos = Memo.find(:all, :conditions => {:p_next => @p_current}, :order=>'t_next DESC')
 
@@ -27,17 +18,7 @@ class MemosController < ApplicationController
   def show
     @memo = Memo.find(params[:id])
 
-    @days_to_njcee = (DateTime.new(2010, 6, 7) - DateTime.now).to_i
-    t = Time.now
-    if t.hour < 6
-      @p_current = ( 300 - @days_to_njcee) * 3
-    elsif t.hour >= 6 and t.hour < 12
-      @p_current = ( 300 - @days_to_njcee) * 3 + 1
-    elsif t.hour >= 12 and t.hour < 18
-      @p_current = ( 300 - @days_to_njcee) * 3 + 2 
-    elsif t.hour >= 18
-      @p_current = ( 300 - @days_to_njcee) * 3 + 3
-    end
+    @p_current = get_p_current()
 
     respond_to do |format|
       format.html # show.html.erb
@@ -50,17 +31,7 @@ class MemosController < ApplicationController
   def new
     @memo = Memo.new
 
-    @days_to_njcee = (DateTime.new(2010, 6, 7) - DateTime.now).to_i
-    t = Time.now
-    if t.hour < 6
-      @p_current = ( 300 - @days_to_njcee) * 3
-    elsif t.hour >= 6 and t.hour < 12
-      @p_current = ( 300 - @days_to_njcee) * 3 + 1
-    elsif t.hour >= 12 and t.hour < 18
-      @p_current = ( 300 - @days_to_njcee) * 3 + 2 
-    elsif t.hour >= 18
-      @p_current = ( 300 - @days_to_njcee) * 3 + 3
-    end
+    @p_current = get_p_current()
 
     respond_to do |format|
       format.html # new.html.erb
@@ -76,17 +47,7 @@ class MemosController < ApplicationController
   def done
     @memo = Memo.find(params[:id])
     
-    @days_to_njcee = (DateTime.new(2010, 6, 7) - DateTime.now).to_i
-    t = Time.now
-    if t.hour < 6
-      @p_current = ( 300 - @days_to_njcee) * 3
-    elsif t.hour >= 6 and t.hour < 12
-      @p_current = ( 300 - @days_to_njcee) * 3 + 1
-    elsif t.hour >= 12 and t.hour < 18
-      @p_current = ( 300 - @days_to_njcee) * 3 + 2 
-    elsif t.hour >= 18
-      @p_current = ( 300 - @days_to_njcee) * 3 + 3
-    end
+    @p_current = get_p_current()
 
   end
 
