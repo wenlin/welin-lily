@@ -45,7 +45,7 @@
   margin: 8px;
 }
 
-h2 {
+h2, h2 a {
 
   float: left;
   font: 15px "微软雅黑", "Calibri", "Lucida Grande", Verdana, sans-serif;

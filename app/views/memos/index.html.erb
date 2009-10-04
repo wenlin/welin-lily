@@ -8,7 +8,12 @@
   <% if m.t_next == nil %>
   <span class="t">N/A 分钟</span>
   <% else %>
-  <span class="t"><%= m.t_next %> 分钟</span>
+  <span class="t">
+    <% if m.n == 1 %>
+    <%= m.t_first * 0.8 %>
+    <% else %>
+    <%= m.t_next %><% end %>
+     分钟</span>
   <% end %>
 <% end %>
 </ol>

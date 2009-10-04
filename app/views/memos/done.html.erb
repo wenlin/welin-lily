@@ -11,7 +11,8 @@
 
     <%= f.hidden_field :p_next, :value => @p_current + 1 %>
     <%= f.hidden_field :n, :value => @memo.n + 1 %>
-  
+    <%= f.hidden_field :t_next, :value => @memo.t_next * 0.72 %>
+
     <%= f.text_field :t_first, :class => "text-field" %>
   
     <%= f.submit 'Done!' , :class => "button" %>

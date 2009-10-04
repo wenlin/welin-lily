@@ -1,5 +1,11 @@
-<h2>Mnemosyne</h2>
-<span class="shortcuts"><%= link_to '< 返回', memos_path %></span>
+<h2><%= link_to 'Mnemosyne', memos_path %></h2>
+<span class="shortcuts">
+  <% if @p_current == @memo.p_next %>
+  <%= link_to "完成", :action => "done", :id => @memo %>
+  <% else %>
+  <%= link_to '< 返回', memos_path %>
+  <% end %>
+</span>
 <hr />
 
 <div id="focus">
@@ -7,7 +13,7 @@
   <p class="description"><%=h @memo.note %></p>
   <p class="meta">
   <% if  @memo.t_first == nil && @memo.n == 0 %>
-  这是首次复习，请注意计时
+  这是首次复习，请注意计时（预计 <%=h @memo.t_next %> 分钟）
   <% elsif @memo.n == 1 %>
   这是第 <%=h @memo.m %> 轮 总第 <%=h @memo.n + 1 %> 次复习 / 建议用时： <%=h @memo.t_first * 0.8 %> 分钟
   <% else %>
@@ -17,8 +23,8 @@
 </div>
 
 <div id="nav">
+
 <%= link_to '删除', @memo, :method => :delete %> · 
-<%= link_to "完成", :action => "done", :id => @memo %> · 
 <%= link_to '编辑', edit_memo_path(@memo) %>
 
 </div>
