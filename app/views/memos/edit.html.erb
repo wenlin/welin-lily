@@ -13,10 +13,18 @@
     <%= f.label :note %>
     <%= f.text_field :note,:class => "text-field" %>
   </p>
+  
+<% if @memo.t_first == nil %>
+  <p>
+    <%= f.label :t_next, "Time estimated (min)" %>
+    <%= f.text_field :t_next, :class => "text-field" %>
+  </p>
+<% else %>
   <p>
     <%= f.label :t_first, "First Revison Length (min)" %>
     <%= f.text_field :t_first, :class => "text-field" %>
   </p>
+<% end %>
 
   <%= f.submit 'Update' ,:class => "button" %>
 
