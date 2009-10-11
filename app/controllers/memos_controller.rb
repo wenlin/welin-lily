@@ -3,9 +3,14 @@ class MemosController < ApplicationController
   # GET /memos.xml
   def index
   
-    @p_current = get_p_current()
+    if params[:p] == nil 
+      @p_current = get_p_current()
+    else
+      @p_current = params[:p]
+    end
 
-    @memos = Memo.find(:all, :conditions => {:p_next => @p_current}, :order=>'t_next DESC')
+    #@memos = Memo.find(:all, :conditions => {:p_next => @p_current}, :order=>'t_next DESC')
+    @memos = Memo.find(:all, :conditions => ["p_next <= ?", @p_current], :order=>'t_next DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +23,11 @@ class MemosController < ApplicationController
   def show
     @memo = Memo.find(params[:id])
 
-    @p_current = get_p_current()
+    if params[:p] == nil 
+      @p_current = get_p_current()
+    else
+      @p_current = params[:p]
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -31,7 +40,11 @@ class MemosController < ApplicationController
   def new
     @memo = Memo.new
 
-    @p_current = get_p_current()
+    if params[:p] == nil 
+      @p_current = get_p_current()
+    else
+      @p_current = params[:p]
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,7 +60,11 @@ class MemosController < ApplicationController
   def done
     @memo = Memo.find(params[:id])
     
-    @p_current = get_p_current()
+    if params[:p] == nil 
+      @p_current = get_p_current()
+    else
+      @p_current = params[:p]
+    end
 
   end
 
