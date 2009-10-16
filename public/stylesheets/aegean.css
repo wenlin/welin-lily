@@ -103,11 +103,10 @@ li a {
 form p {
   margin: 6px 0px;
   padding-top: 4px;
-  text-align: center;
 }
 
 label {
-  float: left;
+  clear: both;
   padding: 2px 0 4px 1px;
 }
 
@@ -128,9 +127,10 @@ input.button {
   float: right;
 }
 
-
-
-
+#errorExplanation h2 {display: none;}
+.fieldWithErrors {clear: both;}
+.fieldWithErrors label {color: #FF5454;}
+.fieldWithErrors input {border-color: #FF5454;}
 
 #focus {
   text-align: center;

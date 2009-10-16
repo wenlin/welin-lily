@@ -1,0 +1,13 @@
+  <h2>Select a Subject</h2>
+  <p class="shortcuts"><%= link_to '< 返回', stuffs_path %></p>
+  <hr />
+
+  <ul class="menu">
+    <li><%= link_to "1 - 语文", :action => @action, :subject => "1" %></li>
+    <li><%= link_to "2 - 数学", :action => @action, :subject => "2" %></li>
+    <li><%= link_to "3 - 英语", :action => @action, :subject => "3" %></li>
+    <li><%= link_to "4 - 政治", :action => @action, :subject => "4" %></li>
+    <li><%= link_to "5 - 历史", :action => @action, :subject => "5" %></li>
+    <li><%= link_to "6 - 地理", :action => @action, :subject => "6" %></li>
+    <li><%= link_to "0 - 其他", :action => @action, :subject => "0" %></li>
+  </ul>

@@ -1,23 +1,6 @@
-<% if !params[:subject] %>
-  <h2>Select a Subject</h2>
-  <p class="shortcuts"><%= link_to '< 返回', stuffs_path %></p>
-  <hr />
-  
-  <ul class="menu">
-    <li><%= link_to "1 - 语文", :action => "new", :subject => "1" %></li>
-    <li><%= link_to "2 - 数学", :action => "new", :subject => "2" %></li>
-    <li><%= link_to "3 - 英语", :action => "new", :subject => "3" %></li>
-    <li><%= link_to "4 - 政治", :action => "new", :subject => "4" %></li>
-    <li><%= link_to "5 - 历史", :action => "new", :subject => "5" %></li>
-    <li><%= link_to "6 - 地理", :action => "new", :subject => "6" %></li>
-    <li><%= link_to "0 - 其他", :action => "new", :subject => "0" %></li>
-  </ul>
-<% end %>
-
-<% if params[:subject] %>
-  <h2>New stuff</h2>
-  <span class="shortcuts"><%= link_to '< 返回', stuffs_path %></span>
-  <hr />
+<h2>New stuff</h2>
+<span class="shortcuts"><%= link_to '< 返回', stuffs_path %></span>
+<hr />
   
   <% form_for(@stuff) do |f| %>
     <%= f.error_messages %>
@@ -40,5 +23,3 @@
       <%= f.submit 'Create' ,:class => "button" %>
   
   <% end %>
-
-<% end %>

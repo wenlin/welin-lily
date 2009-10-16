@@ -13,11 +13,11 @@
   <p class="description"><%=h @memo.note %></p>
   <p class="meta">
   <% if  @memo.t_first == nil && @memo.n == 0 %>
-  这将是首次复习，请注意计时<br />预计用时： <%=h @memo.t_next %> 分钟
+  这将是首次复习，请注意计时<br />（预计用时： <%=h @memo.t_next %> 分钟）
   <% elsif @memo.n == 1 %>
-  这是第 <%=h @memo.m %> 轮 总第 <%=h @memo.n + 1 %> 次复习 <br /> 建议用时： <%=h @memo.t_first * 0.8 %> 分钟
+  这将是第 <%=h @memo.m %> 轮 总第 <%=h @memo.n + 1 %> 次复习 <br /> （建议用时： <%=h @memo.t_first * 0.8 %> 分钟）
   <% else %>
-  这是第 <%=h @memo.m %> 轮 总第 <%=h @memo.n + 1 %> 次复习 <br /> 建议用时： <%=h @memo.t_next %> 分钟
+  这将是第 <%=h @memo.m %> 轮 总第 <%=h @memo.n + 1 %> 次复习 <br /> （建议用时： <%=h @memo.t_next %> 分钟）
   <% end %>
   </p>
 </div>

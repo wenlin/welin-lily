@@ -12,7 +12,7 @@
   <%= f.hidden_field :note %>
   <%= f.hidden_field :status, :value => 0 %>
 
-  <p>你确定要存档 #1<%=h @stuff.subject_id %><%=h @stuff.day_id %><%=h @stuff.sn %> 吗？存档后将不会再主界面显示。</p>
+  <p>你确定要存档 #1<%=h @stuff.subject_id %><%=h @stuff.day_id %><%=h @stuff.sn %> 吗？<br />存档后将不会再主界面显示。</p>
   <%= f.submit 'Confirm' ,:class => "button" %>
   
 <% end %>
