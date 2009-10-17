@@ -40,10 +40,6 @@ class StuffsController < ApplicationController
     end
   end
 
-  def subject
-    @action = params[:a]
-  end
-
   # GET /stuffs/1/edit
   def edit
     @stuff = Stuff.find(params[:id])
