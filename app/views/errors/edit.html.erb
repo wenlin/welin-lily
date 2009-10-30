@@ -1,0 +1,12 @@
+<h1>Editing errors</h1>
+
+<% form_for(@errors) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @errors %> |
+<%= link_to 'Back', errors_path %>

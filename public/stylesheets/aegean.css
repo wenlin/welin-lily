@@ -13,7 +13,7 @@
 
 #header h1 {
   float: left;
-  margin: 4px 0 0 4px;
+  margin: 5px 0 0 4px;
   font-size: 20px;
   font-weight: bold;
   color: #E9F9FF;
@@ -175,9 +175,12 @@ a {
 }
 
 #footer {
-  padding: 6px;
+  clear: both;
+  padding-top: 24px;
   color: #999;
-  font-size: 14px;
+  text-align: center;
+  font-size: 12px;
+  color: #DADADA;
 }
 
 .date {

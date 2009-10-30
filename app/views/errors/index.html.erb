@@ -1,0 +1,9 @@
+<h2>Recnet Errors</h2>
+<p class="shortcuts"><%= link_to "ÐÂ½¨", :controller => "subjects", :action => "select", :c => "stuffs", :a => "new" %></p>
+<hr />
+
+<ol>
+<% @errors.each do |e| %>
+  <li class="no-id"><strong></strong><%= link_to s.name, s %></li>
+<% end %>
+</ol>
