@@ -67,6 +67,9 @@ li {
   float: left;
   clear: left;
   padding: 2px 0;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  white-space: nowrap;
   color: #242424;
 }
 
@@ -83,16 +86,17 @@ li.no-id strong {
 /* I put this outside of <li> beacause there is a bug of Opera.
     More: http://blog.guoshuang.com/?p=3837
 */
-.t {
+.t, .t a {
   float: right;
   clear: right;
-  margin-right: 6px;
-  padding: 2px 0;
+  font-size: 14px;
+  margin-top: 2px; 
   color: #CCC;
 }
 
 li a {
   font-size: 14px;
+  padding-left: 2px;
 }
 
 .menu li a {
@@ -160,6 +164,7 @@ input.button {
 
 #nav {
   clear: both;
+  margin-top: 2px;
   padding: 2px 0;
   border-top: 1px solid #EAEAEA;
   border-bottom: 1px solid #EAEAEA;
@@ -176,7 +181,7 @@ a {
 
 #footer {
   clear: both;
-  padding-top: 24px;
+  padding-top: 16px;
   color: #999;
   text-align: center;
   font-size: 12px;

@@ -4,17 +4,18 @@
 
 <ol>
 <% @memos.each do |m| %>
-  <li><%= link_to m.name, m %></li>
+  <li><%= link_to m.name, :action => "done", :id => m.id %></li>
   <% if m.t_next == nil %>
-  <span class="t">N/A 分钟</span>
+  <span class="t"><%= link_to "N/A 分钟", m %></span>
   <% else %>
   <span class="t">
     <% if m.n == 1 %>
-      <%= m.t_first * 0.8 %>
+      <%= link_to "#{m.t_first * 0.8} 分钟", m %>
     <% else %>
-      <%= m.t_next %>
+      <%= link_to "#{m.t_next} 分钟", m %>
     <% end %>
-     分钟</span>
+  </span>
   <% end %>
 <% end %>
 </ol>
+<hr />

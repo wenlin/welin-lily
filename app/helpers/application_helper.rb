@@ -15,5 +15,4 @@ module ApplicationHelper
 	end
 	return @days_to_njcee
   end
-
 end
