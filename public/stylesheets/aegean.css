@@ -11,9 +11,12 @@
   height: 30px;
 }
 
-#header h1 {
+h1 {
   float: left;
-  margin: 5px 0 0 4px;
+  margin-top: 2px;
+}
+
+#header h1, #header a {
   font-size: 20px;
   font-weight: bold;
   color: #E9F9FF;

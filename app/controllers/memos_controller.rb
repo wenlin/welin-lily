@@ -78,6 +78,11 @@ class MemosController < ApplicationController
     end
 
   end
+  
+  def round
+    @memo = Memo.find(params[:id])
+    @p_current = get_p_current()
+  end
 
   # POST /memos
   # POST /memos.xml

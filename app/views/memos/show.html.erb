@@ -1,4 +1,4 @@
-<h2><%= link_to 'Mnemosyne', memos_path %></h2>
+<h2><%= "Memo ##{@memo.id}" %></h2>
 <span class="shortcuts">
   <% if @p_current >= @memo.p_next %>
   <%= link_to "完成", :action => "done", :id => @memo %>
@@ -26,5 +26,7 @@
 
 <%= link_to '删除', @memo, :method => :delete %> · 
 <%= link_to '编辑', edit_memo_path(@memo) %>
-
+<% if @memo.n >= 6 and @memo.t_next < 3 %>
+ · <%= link_to "新一轮", :action => "round", :id => @memo.id %>
+<% end %>
 </div>

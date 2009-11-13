@@ -1,0 +1,26 @@
+<h2>Start a new round</h2>
+<p class="shortcuts"><%= link_to '< 返回', @memo %></p>
+<hr />
+
+<% form_for(@memo) do |f| %>
+	<p>在开始 <b><%= @memo.name %></b> 的第 <%= @memo.m + 1 %> 轮复习之前，<br />请更新以下信息：</p>
+
+	<%= f.error_messages %>
+
+	<%= f.hidden_field :m, :value => @memo.m + 1 %>
+	<%= f.hidden_field :n, :value => 0 %>
+  <%= f.hidden_field :t_first, :value => "" %>
+	<%= f.hidden_field :p_first, :value => @p_current %>
+	<%= f.hidden_field :p_next, :value => @p_current %>
+
+  <p>
+    <%= f.label :t_next, "Time estimated (min)" %>
+    <%= f.text_field :t_next ,:class => "text-field" %>
+  </p>
+  <p>
+    <%= f.label :note %>
+    <%= f.text_field :note ,:class => "text-field" %>
+  </p>
+
+	<%= f.submit 'Confirm' , :class => "button" %>
+<% end %>
