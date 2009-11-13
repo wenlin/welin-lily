@@ -1,0 +1,20 @@
+<h2>Show All</h2>
+<p class="shortcuts"><%= link_to '< 返回', :action => "index" %></p>
+<hr />
+
+<ol>
+<% @memos.each do |m| %>
+  <li><%= link_to m.name, m %></li>
+  <% if m.t_next == nil %>
+    <% @time = "N/A" %>
+  <% else %>
+    <% if m.n == 1 %>
+      <% @time = "#{m.t_first * 0.8}" %>
+    <% else %>
+      <% @time = "#{m.t_next}" %>
+    <% end %>
+  <% end %>
+	<span class="t"><%= link_to "#{@time} / #{m.p_next}", m %></span>
+<% end %>
+</ol>
+<hr />

@@ -17,6 +17,17 @@ class MemosController < ApplicationController
       format.xml  { render :xml => @memos }
     end
   end
+  
+  def all
+
+    @p_current = 1000
+    @memos = Memo.find(:all, :conditions => ["p_next <= ?", @p_current], :order=>'p_next')
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @memos }
+    end
+  end
 
   # GET /memos/1
   # GET /memos/1.xml
