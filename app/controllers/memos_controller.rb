@@ -76,7 +76,7 @@ class MemosController < ApplicationController
     respond_to do |format|
       if @memo.save
         flash[:notice] = '创建成功'
-        format.html { redirect_to(@memo) }
+        format.html { redirect_to(:action => "index") }
         format.xml  { render :xml => @memo, :status => :created, :location => @memo }
       else
         format.html { render :action => "new" }
@@ -93,7 +93,7 @@ class MemosController < ApplicationController
     respond_to do |format|
       if @memo.update_attributes(params[:memo])
         flash[:notice] = '信息已更新'
-        format.html { redirect_to(@memo) }
+        format.html { redirect_to(:action => "index") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
