@@ -15,4 +15,25 @@ module ApplicationHelper
 	end
 	return @days_to_njcee
   end
+  
+  def get_p_current
+	local = DateTime.now
+	utc = local.new_offset
+	offset = Rational(8, 24)
+	t = utc.new_offset(offset)
+
+	@days_to_njcee = get_days_to_njcee()
+
+	if t.hour < 6
+	  @p_current = ( 300 - @days_to_njcee) * 3
+	elsif t.hour >= 6 and t.hour < 13
+	  @p_current = ( 300 - @days_to_njcee) * 3 + 1
+	elsif t.hour >= 13 and t.hour < 18
+	  @p_current = ( 300 - @days_to_njcee) * 3 + 2 
+	elsif t.hour >= 18
+	  @p_current = ( 300 - @days_to_njcee) * 3 + 3
+	end
+
+	return @p_current
+  end
 end

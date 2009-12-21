@@ -1,26 +1,71 @@
-<h2>Memo Queue <%= @p_current %></h2>
-<p class="shortcuts"><%= link_to '新建', new_memo_path %></p>
-<hr />
-
-<ol>
-<% @memos.each do |m| %>
-  <li><%= link_to m.name, :action => "done", :id => m.id %></li>
-  <% if m.t_next == nil %>
-  <span class="t"><%= link_to "N/A 分钟", m %></span>
-  <% else %>
-  <span class="t">
-    <% if m.n == 1 %>
-      <%= link_to "#{m.t_first * 0.8} 分钟", m %>
+<div id="focus">
+<% if @memo_focus == nil %>
+    <p class="title"><%= link_to "队列已清空（新建？）", :action => "new" %>
+<% else %>
+    <p class="title"><%= link_to @memo_focus.name, :action => "done", :id => @memo_focus.id %>
+    <p class="description"><%=h @memo_focus.note %></p>
+    <p class="meta">
+      <% if  @memo_focus.t_first == nil && @memo_focus.n == 0 %>
+        这将是首次复习，请注意计时<br />（预计用时： <%=h @memo_focus.t_next %> 分钟）
+      <% elsif @memo_focus.n == 1 %>
+        这将是第 <%=h @memo_focus.m %> 轮 总第 <%=h @memo_focus.n + 1 %> 次复习 <br /> （建议用时： <%=h @memo_focus.t_first * 0.8 %> 分钟）
+      <% else %>
+        这将是第 <%=h @memo_focus.m %> 轮 总第 <%=h @memo_focus.n + 1 %> 次复习 <br /> （建议用时： <%=h @memo_focus.t_next %> 分钟）
+      <% end %>
+    </p>
+  
+  </div>
+  <hr />
+  
+  <h2 id="current">Current</h2>
+  <p class="shortcuts"><%= link_to '新建', new_memo_path %></p>
+  <hr />
+  
+  <ol>
+  <% @memos.each do |m| %>
+    <li><%= link_to m.name, :action => "done", :id => m.id %></li>
+    <% if m.t_next == nil %>
+    <span class="t"><%= link_to "N/A 分钟", m %></span>
     <% else %>
-      <%= link_to "#{m.t_next} 分钟", m %>
+    <span class="t">
+      <% if m.n == 1 %>
+        <%= link_to "#{m.t_first * 0.8} 分钟", m %>
+      <% else %>
+        <%= link_to "#{m.t_next} 分钟", m %>
+      <% end %>
+    </span>
     <% end %>
-  </span>
   <% end %>
+  </ol>
 <% end %>
-</ol>
+
+
+<br /><hr />
+
+<h2 id="delayed">Delayed</h2>
+<p class="shortcuts"><a href="#">顶部</a></p>
+<hr />
+<% if @memos_delayed.size == 0 %>
+  <p style="text-align: center; padding: 8px;">太棒了，没有拖延项！</p>
+<% else %>
+  <ol>
+  <% @memos_delayed.each do |m| %>
+    <li><%= link_to m.name, :action => "done", :id => m.id %></li>
+    <% if m.t_next == nil %>
+    <span class="t"><%= link_to "N/A 分钟", m %></span>
+    <% else %>
+    <span class="t">
+      <% if m.n == 1 %>
+        <%= link_to "#{m.t_first * 0.8} 分钟", m %>
+      <% else %>
+        <%= link_to "#{m.t_next} 分钟", m %>
+      <% end %>
+    </span>
+    <% end %>
+  <% end %>
+  </ol>
+<% end %>
+
 <div id="nav">
-
-<%= link_to '查看全部', :action => "all", :id => @p_current %> · 
-
-
+<%= link_to '查看全部', :action => "all", :id => @p_current %>
 </div>

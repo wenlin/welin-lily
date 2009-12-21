@@ -1,16 +1,13 @@
 class MemosController < ApplicationController
+ before_filter :set_p
+
   # GET /memos
   # GET /memos.xml
   def index
-  
-    if params[:p] == nil 
-      @p_current = get_p_current()
-    else
-      @p_current = params[:p]
-    end
-
     #@memos = Memo.find(:all, :conditions => {:p_next => @p_current}, :order=>'t_next DESC')
-    @memos = Memo.find(:all, :conditions => ["p_next <= ?", @p_current], :order=>'t_next DESC')
+    @memos = Memo.find(:all, :conditions => ["p_next = ?", @p_current], :order=>'t_next DESC')
+    @memo_focus = @memos.first
+    @memos_delayed = Memo.find(:all, :conditions => ["p_next < ?", @p_current], :order=>'t_next DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -22,6 +19,7 @@ class MemosController < ApplicationController
 
     @p_current = 1000
     @memos = Memo.find(:all, :conditions => ["p_next <= ?", @p_current], :order=>'p_next')
+    @memos_delayed = Memo.find(:all, :conditions => ["p_next < ?", @p_current], :order=>'t_next DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -33,6 +31,8 @@ class MemosController < ApplicationController
   # GET /memos/1.xml
   def show
     @memo = Memo.find(params[:id])
+    @memos = Memo.find(:all, :conditions => ["p_next = ?", @p_current], :order=>'t_next DESC')
+    @memos_delayed = Memo.find(:all, :conditions => ["p_next < ?", @p_current], :order=>'t_next DESC')
 
     if params[:p] == nil 
       @p_current = get_p_current()
@@ -50,6 +50,8 @@ class MemosController < ApplicationController
   # GET /memos/new.xml
   def new
     @memo = Memo.new
+    @memos = Memo.find(:all, :conditions => ["p_next = ?", @p_current], :order=>'t_next DESC')
+    @memos_delayed = Memo.find(:all, :conditions => ["p_next < ?", @p_current], :order=>'t_next DESC')
 
     if params[:p] == nil 
       @p_current = get_p_current()
@@ -65,10 +67,16 @@ class MemosController < ApplicationController
 
   # GET /memos/1/edit
   def edit
+    @memos = Memo.find(:all, :conditions => ["p_next = ?", @p_current], :order=>'t_next DESC')
+    @memos_delayed = Memo.find(:all, :conditions => ["p_next < ?", @p_current], :order=>'t_next DESC')
+
     @memo = Memo.find(params[:id])
   end
 
   def done
+    @memos = Memo.find(:all, :conditions => ["p_next = ?", @p_current], :order=>'t_next DESC')
+    @memos_delayed = Memo.find(:all, :conditions => ["p_next < ?", @p_current], :order=>'t_next DESC')
+
     @memo = Memo.find(params[:id])
     
     if params[:p] == nil 
@@ -80,6 +88,9 @@ class MemosController < ApplicationController
   end
   
   def round
+    @memos = Memo.find(:all, :conditions => ["p_next = ?", @p_current], :order=>'t_next DESC')
+    @memos_delayed = Memo.find(:all, :conditions => ["p_next < ?", @p_current], :order=>'t_next DESC')
+
     @memo = Memo.find(params[:id])
     @p_current = get_p_current()
   end
@@ -88,6 +99,9 @@ class MemosController < ApplicationController
   # POST /memos.xml
   def create
     @memo = Memo.new(params[:memo])
+    @memos = Memo.find(:all, :conditions => ["p_next = ?", @p_current], :order=>'t_next DESC')
+    @memos_delayed = Memo.find(:all, :conditions => ["p_next < ?", @p_current], :order=>'t_next DESC')
+
 
     respond_to do |format|
       if @memo.save
@@ -105,6 +119,8 @@ class MemosController < ApplicationController
   # PUT /memos/1.xml
   def update
     @memo = Memo.find(params[:id])
+    @memos = Memo.find(:all, :conditions => ["p_next = ?", @p_current], :order=>'t_next DESC')
+    @memos_delayed = Memo.find(:all, :conditions => ["p_next < ?", @p_current], :order=>'t_next DESC')
 
     respond_to do |format|
       if @memo.update_attributes(params[:memo])
@@ -123,10 +139,22 @@ class MemosController < ApplicationController
   def destroy
     @memo = Memo.find(params[:id])
     @memo.destroy
+    @memos = Memo.find(:all, :conditions => ["p_next = ?", @p_current], :order=>'t_next DESC')
+    @memos_delayed = Memo.find(:all, :conditions => ["p_next < ?", @p_current], :order=>'t_next DESC')
 
     respond_to do |format|
       format.html { redirect_to(memos_url) }
       format.xml  { head :ok }
     end
   end
+  
+  private
+    def set_p
+        if params[:p] == nil 
+          @p_current = get_p_current()
+        else
+          @p_current = params[:p]
+        end
+    end
+
 end

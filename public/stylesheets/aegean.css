@@ -32,6 +32,17 @@ h1 {
   color: #fff;
 }
 
+#header span a {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #D7F5FF;
+}
+
+#header span a em {
+  font-weight: bold;
+  color: #fff;
+}
+
 #notice {
   padding: 2px 0;
   font-size: 12px;
@@ -143,7 +154,7 @@ input.button {
   text-align: center;
 }
 
-#focus .title {
+#focus .title, #focus .title a {
   margin: 8px 0;
   font: 24px "微软雅黑", "黑体", Verdana, sans-serif;
   font-weight: bold;
