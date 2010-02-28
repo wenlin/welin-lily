@@ -4,17 +4,19 @@
 <head> 
   <meta http-equiv="Content-type" content="text/html;charset=utf-8" /> 
   <%= stylesheet_link_tag 'aegean' %>
-  <title>Project Athens - Stuffs: <%= controller.action_name %></title> 
+  <title>麦芒创想试卷管理</title> 
 </head> 
 <body> 
 <div id="header">
-  <h1>Project Athens</h1> 
-  <span><%= get_days_to_njcee() %></span>
+  <h1><%= link_to "当前记忆点：#{get_p_current()}", :controller => "stuffs", :action => "index" %></h1> 
+  <span><%= get_days_to_njcee() %> 天</span>
 </div>
 <p id="notice"><%= flash[:notice] %></p>
 <div id="content">
 <%= yield %>
 </div>
+
+<p id="footer">天道酬勤 快以制胜</p>
 
 </body> 
 </html>

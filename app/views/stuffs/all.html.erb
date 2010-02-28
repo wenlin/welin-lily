@@ -1,0 +1,11 @@
+<h2>All Stuffs</h2>
+<p class="shortcuts"><%= link_to "< 返回", :action => "index" %></p>
+<hr />
+
+  <ol>
+  <% @stuffs.each do |s| %>
+	  <li class="no-id"><strong><%=h s.subject_id %>0<%=h s.day_id %><% if s.sn < 10 %>0<% end %><%=h s.sn %></strong> <%= link_to s.name, s %></li>
+  <% end %>
+  </ol>
+
+<br /><hr />

@@ -1,10 +1,25 @@
-<h2>Listing stuffs</h2>
+<h2>Recent Added</h2>
 <p class="shortcuts"><%= link_to "新建", :controller => "subjects", :action => "select", :c => "stuffs", :a => "new" %></p>
 <hr />
-
-<ol>
-<% @stuffs.each do |s| %>
-  <li class="no-id"><strong>1<%=h s.subject_id %><%=h s.day_id %><%=h s.sn %></strong><%= link_to s.name, s %></li>
+<% if @recent_added.size == 0 %>
+  <p style="text-align: center; padding-top: 12px;">还没有纪录。请新建。</p>
+<% else %>
+  <ol>
+  <% @recent_added.each do |s| %>
+      <li class="no-id"><strong><%=h s.subject_id %>0<%=h s.day_id %><% if s.sn < 10 %>0<% end %><%=h s.sn %></strong> <%= link_to s.name, s %></li>
+  <% end %>
+  </ol>
 <% end %>
-</ol>
+<br /><hr />
 
+<% if @recent_archived.size == 0 %>
+ <!-- Just Show Nothing -->
+<% else %>
+  <h2 id="delayed">Recent Archived</h2>
+  <p class="shortcuts"><%= link_to "全部", :action => "all", :id => 2010 %></p>
+  <hr />
+  <% @recent_archived.each do |s| %>
+    <li class="no-id"><strong><%=h s.subject_id %>0<%=h s.day_id %><% if s.sn < 10 %>0<% end %><%=h s.sn %></strong> <%= link_to s.name, s %></li>
+  <% end %>
+  <hr />
+<% end %>

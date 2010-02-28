@@ -3,12 +3,24 @@ class StuffsController < ApplicationController
   # GET /stuffs.xml
   def index
     @stuffs = Stuff.all
+    @recent_added = Stuff.find(:all, :conditions => {:status => 1 }, :limit => 10, :order => "id DESC")
+    @recent_archived = Stuff.find(:all, :conditions => {:status => 0 }, :limit => 5, :order => "updated_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @stuffs }
     end
   end
+
+  def all
+    @stuffs = Stuff.find(:all, :order => "id DESC")
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @stuffs }
+    end
+  end
+
 
   # GET /stuffs/1
   # GET /stuffs/1.xml
@@ -32,7 +44,7 @@ class StuffsController < ApplicationController
   # GET /stuffs/new.xml
   def new
     @stuff = Stuff.new
-    @days_to_njcee = (DateTime.new(2010, 6, 7) - DateTime.now).to_i
+    @days_to_njcee = get_days_to_njcee()
 
     respond_to do |format|
       format.html # new.html.erb
@@ -101,5 +113,21 @@ class StuffsController < ApplicationController
       format.html { redirect_to(stuffs_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def get_days_to_njcee
+    local = DateTime.now
+    utc = local.new_offset
+    offset = Rational(8, 24)
+    t = utc.new_offset(offset)
+    njcee = DateTime.new(2010, 6, 7)
+    @days_to_njcee = ( njcee - t).to_i
+    if t.zone != "+0800" or t.zone != "+08:00"
+      if t.hour < 8
+        @days_to_njcee = @days_to_njcee - 1
+      end
+    end
+    @days_to_njcee = @days_to_njcee + 1
+    return @days_to_njcee
   end
 end
