@@ -13,6 +13,7 @@ module ApplicationHelper
 		@days_to_njcee = @days_to_njcee - 1
 	  end
 	end
+	@days_to_njcee = @days_to_njcee + 1
 	return @days_to_njcee
   end
   
