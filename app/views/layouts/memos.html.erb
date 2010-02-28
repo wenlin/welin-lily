@@ -4,11 +4,11 @@
 <head> 
   <meta http-equiv="Content-type" content="text/html;charset=utf-8" /> 
   <%= stylesheet_link_tag 'aegean' %>
-  <title>麦芒创想记忆辅助</title> 
+  <title>(<%= get_days_to_njcee() %>) 麦芒创想记忆辅助</title> 
 </head> 
 <body> 
 <div id="header">
-  <h1><%= link_to "记忆点 #{get_p_current()}（ #{get_days_to_njcee()} 天）", :action => "index" %></h1> 
+  <h1><%= link_to "记忆点 #{get_p_current()}", :action => "index" %></h1> 
   <span><a href="#current">CRT <em><%= @memos.size %></em></a> / <a href="#delayed">DLY <em><%= @memos_delayed.size %></em></a></span>
 </div>
 <p id="notice"><%= flash[:notice] %></p>
