@@ -114,9 +114,14 @@ li a {
 }
 
 .menu li a {
-  padding: 4px 0;
+  padding: 2px 1px;
   display: block;
 }
+
+.menu li a b{
+  font-weight: bold;
+}
+
 
 form p {
   margin: 6px 0px;

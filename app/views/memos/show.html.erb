@@ -24,7 +24,7 @@
 
 <div id="nav">
 
-<%= link_to '删除', @memo, :method => :delete %> · 
+<!--<%= link_to '删除', @memo, :method => :delete %> · -->
 <%= link_to '编辑', edit_memo_path(@memo) %>
 <% if @memo.n >= 6 and @memo.t_next < 3 %>
  · <%= link_to "新一轮", :action => "round", :id => @memo.id %>
