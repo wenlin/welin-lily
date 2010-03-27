@@ -18,12 +18,12 @@
   <hr />
   
   <h2 id="current">Current</h2>
-  <p class="shortcuts"><%= link_to '新 建', new_memo_path %></p>
+  <p class="shortcuts"><%= link_to '新建', new_memo_path %></p>
   <hr />
   
   <ol>
   <% @memos.each do |m| %>
-    <li><%= link_to "#{m.name} <sup style='color:#FFF'> </sup>", :action => "done", :id => m.id %></li>
+    <li><%= link_to "#{m.name} <sup style='color:#FFF'>.</sup>", :action => "done", :id => m.id %></li>
     <% if m.t_next == nil %>
     <span class="t"><%= link_to "N/A 分钟 <sup>#{m.n}</sup>", m %></span>
     <% else %>
@@ -43,14 +43,14 @@
 <hr />
 
 <h2 id="delayed">Delayed</h2>
-<p class="shortcuts"><a href="#">顶 部</a></p>
+<p class="shortcuts"><a href="#">顶部</a></p>
 <hr />
 <% if @memos_delayed.size == 0 %>
   <p style="text-align: center; padding: 8px;">太棒了，没有拖延项！</p>
 <% else %>
   <ol>
   <% @memos_delayed.each do |m| %>
-    <li><%= link_to "#{m.name} <sup style='color:#FFF'> </sup>", :action => "done", :id => m.id %></li>
+    <li><%= link_to "#{m.name} <sup style='color:#FFF'>.</sup>", :action => "done", :id => m.id %></li>
     <span class="t">
       <% if m.t_next == nil %>
         <%= link_to "N/A 分钟 <sup>#{(@p_current - m.p_next)/3}</sup>", m %>
