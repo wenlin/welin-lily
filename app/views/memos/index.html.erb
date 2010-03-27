@@ -23,15 +23,15 @@
   
   <ol>
   <% @memos.each do |m| %>
-    <li><%= link_to "#{m.name}", :action => "done", :id => m.id %></li>
+    <li><%= link_to "#{m.name} <sup style='color:#FFF'>.</sup>", :action => "done", :id => m.id %></li>
     <% if m.t_next == nil %>
-    <span class="t"><%= link_to "N/A 分钟", m %></span>
+    <span class="t"><%= link_to "N/A 分钟 <sup>#{m.n}</sup>", m %></span>
     <% else %>
     <span class="t">
       <% if m.n == 1 %>
-        <%= link_to "#{m.t_first * 0.8} 分钟", m %>
+        <%= link_to "#{m.t_first * 0.8} 分钟 <sup>#{m.n}</sup>", m %>
       <% else %>
-        <%= link_to "#{m.t_next} 分钟", m %>
+        <%= link_to "#{m.t_next} 分钟 <sup>#{m.n}</sup>", m %>
       <% end %>
     </span>
     <% end %>
@@ -50,22 +50,22 @@
 <% else %>
   <ol>
   <% @memos_delayed.each do |m| %>
-    <li><%= link_to "#{m.name} <sup>#{(@p_current - m.p_next)/3}</sup>", :action => "done", :id => m.id %></li>
+    <li><%= link_to "#{m.name} <sup style='color:#FFF'>.</sup>", :action => "done", :id => m.id %></li>
     <span class="t">
       <% if m.t_next == nil %>
-        <%= link_to "N/A 分钟", m %>
+        <%= link_to "N/A 分钟 <sup>#{(@p_current - m.p_next)/3}</sup>", m %>
       <% else %>
         <% if m.n == 1 %>
-          <%= link_to "#{m.t_first * 0.8} 分钟", m %>
+          <%= link_to "#{m.t_first * 0.8} 分钟 <sup>#{(@p_current - m.p_next)/3}</sup>", m %>
         <% else %>
-          <%= link_to "#{m.t_next} 分钟", m %>
+          <%= link_to "#{m.t_next} 分钟 <sup>#{(@p_current - m.p_next)/3}</sup>", m %>
         <% end %>
       <% end %>
     </span>
   <% end %>
   </ol>
 <% end %>
-
+<br class="clear" />
 <div id="nav">
 <%= link_to "昨日（#{@memos_yesterday_count}）", :action => "all", :id => @p_current %> · 
 <%= link_to "今日（#{@memos_today_count}）", :action => "today", :id => @p_current %> · 

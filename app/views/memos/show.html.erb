@@ -11,7 +11,7 @@
   <% end %>
   </p>
 </div>
-
+<br class="clear" />
 <div id="nav">
   <% if @p_current >= @memo.p_next %><%= link_to "完成", :action => "done", :id => @memo %><% end %> · 
   <%= link_to '编辑', edit_memo_path(@memo) %> · 
