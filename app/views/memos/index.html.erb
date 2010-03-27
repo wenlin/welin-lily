@@ -23,7 +23,7 @@
   
   <ol>
   <% @memos.each do |m| %>
-    <li><%= link_to "#{m.name} <sup style='color:#FFF'>.</sup>", :action => "done", :id => m.id %></li>
+    <li><%= link_to "#{m.name} <sup style='color:#FFF'></sup>", :action => "done", :id => m.id %></li>
     <% if m.t_next == nil %>
     <span class="t"><%= link_to "N/A 分钟 <sup>#{m.n}</sup>", m %></span>
     <% else %>
@@ -35,7 +35,6 @@
       <% end %>
     </span>
     <% end %>
-    <hr class="dotted" />
   <% end %>
   </ol>
 <% end %>
@@ -51,7 +50,7 @@
 <% else %>
   <ol>
   <% @memos_delayed.each do |m| %>
-    <li><%= link_to "#{m.name} <sup style='color:#FFF'>.</sup>", :action => "done", :id => m.id %></li>
+    <li><%= link_to "#{m.name} <sup style='color:#FFF'></sup>", :action => "done", :id => m.id %></li>
     <span class="t">
       <% if m.t_next == nil %>
         <%= link_to "N/A 分钟 <sup>#{(@p_current - m.p_next)/3}</sup>", m %>
@@ -63,7 +62,6 @@
         <% end %>
       <% end %>
     </span>
-    <hr class="dotted" />
   <% end %>
   </ol>
 <% end %>
