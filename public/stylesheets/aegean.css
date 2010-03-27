@@ -34,13 +34,16 @@ h1 {
 
 #header span a {
   font-size: 14px;
-  letter-spacing: 1px;
-  color: #D7F5FF;
-}
-
-#header span a em {
   font-weight: bold;
   color: #fff;
+}
+
+#header span em {
+  letter-spacing: 1px;
+  color: #D7F5FF;
+  text-shadow: #30ACD6 0 1px 0;
+  margin-top: 2px;
+  font-weight: bold;
 }
 
 #notice {

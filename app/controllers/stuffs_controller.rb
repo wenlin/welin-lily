@@ -3,7 +3,7 @@ class StuffsController < ApplicationController
   # GET /stuffs.xml
   def index
     @stuffs = Stuff.all
-    @recent_added = Stuff.find(:all, :conditions => {:status => 1 }, :limit => 10, :order => "id DESC")
+    @recent_added = Stuff.find(:all, :conditions => {:status => 1 }, :order => "id DESC")
     @recent_archived = Stuff.find(:all, :conditions => {:status => 0 }, :limit => 5, :order => "updated_at DESC")
 
     respond_to do |format|
@@ -65,7 +65,7 @@ class StuffsController < ApplicationController
     respond_to do |format|
       if @stuff.save
         flash[:notice] = '创建成功'
-        format.html { redirect_to(@stuff) }
+        format.html { redirect_to(:action => "index") }
         format.xml  { render :xml => @stuff, :status => :created, :location => @stuff }
       else
         format.html { render :action => "new" }
@@ -94,7 +94,7 @@ class StuffsController < ApplicationController
     respond_to do |format|
       if @stuff.update_attributes(params[:stuff])
         flash[:notice] = '修改成功'
-        format.html { redirect_to(@stuff) }
+        format.html { redirect_to(:action => "index") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
