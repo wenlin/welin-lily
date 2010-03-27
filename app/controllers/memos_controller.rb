@@ -7,7 +7,12 @@ class MemosController < ApplicationController
     #@memos = Memo.find(:all, :conditions => {:p_next => @p_current}, :order=>'t_next DESC')
     @memos = Memo.find(:all, :conditions => ["p_next = ?", @p_current], :order=>'t_next DESC')
     @memo_focus = @memos.first
-    @memos_delayed = Memo.find(:all, :conditions => ["p_next < ?", @p_current], :order=>'t_next DESC')
+    @memos_delayed = Memo.find(:all, :conditions => ["p_next < ?", @p_current], :order=>'p_next')
+
+    @memos_all_count = Memo.count
+    @memos_today_count = Memo.find(:all, :conditions => ["p_first = ?", @p_current]).size
+    @memos_yesterday_count = Memo.find(:all, :conditions => ["p_first = ?", @p_current - 1]).size
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,6 +24,15 @@ class MemosController < ApplicationController
 
     @p_current = 1000
     @memos = Memo.find(:all, :conditions => ["p_next <= ?", @p_current], :order=>'p_next')
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @memos }
+    end
+  end
+
+  def today
+    @memos = Memo.find(:all, :conditions => ["p_first = ?", @p_current], :order=>'p_next')
     @memos_delayed = Memo.find(:all, :conditions => ["p_next < ?", @p_current], :order=>'t_next DESC')
 
     respond_to do |format|

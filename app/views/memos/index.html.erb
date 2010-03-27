@@ -51,21 +51,23 @@
   <ol>
   <% @memos_delayed.each do |m| %>
     <li><%= link_to m.name, :action => "done", :id => m.id %></li>
-    <% if m.t_next == nil %>
-    <span class="t"><%= link_to "N/A 分钟", m %></span>
-    <% else %>
     <span class="t">
-      <% if m.n == 1 %>
-        <%= link_to "#{m.t_first * 0.8} 分钟", m %>
+      <% if m.t_next == nil %>
+        <%= link_to "（#{(@p_current - m.p_next)/3} 天）N/A 分钟", m %>
       <% else %>
-        <%= link_to "#{m.t_next} 分钟", m %>
+        <% if m.n == 1 %>
+          <%= link_to "（#{(@p_current - m.p_next)/3} 天）#{m.t_first * 0.8} 分钟", m %>
+        <% else %>
+          <%= link_to "（#{(@p_current - m.p_next)/3} 天）#{m.t_next} 分钟", m %>
+        <% end %>
       <% end %>
     </span>
-    <% end %>
   <% end %>
   </ol>
 <% end %>
 
 <div id="nav">
-<%= link_to '查看全部', :action => "all", :id => @p_current %>
+<%= link_to "昨日新增（#{@memos_yesterday_count}）", :action => "all", :id => @p_current %> · 
+<%= link_to "今日新增（#{@memos_today_count}）", :action => "today", :id => @p_current %> · 
+<%= link_to "全部项目（#{@memos_all_count}）", :action => "all", :id => @p_current %>
 </div>

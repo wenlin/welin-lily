@@ -9,14 +9,13 @@
 <body> 
 <div id="header">
   <h1><%= link_to "记忆点 #{get_p_current()}", :action => "index" %></h1> 
-  <span><a href="#current">CRT <em><%= @memos.size %></em></a> / <a href="#delayed">DLY <em><%= @memos_delayed.size %></em></a></span>
+  <span><a href="#current">当前 <em><%= @memos.size %></em></a> / <a href="#delayed">延误 <em><%= @memos_delayed.size %></em></a></span>
 </div>
 <p id="notice"><%= flash[:notice] %></p>
 <div id="content">
 <%= yield %>
 
 <p id="footer">天道酬勤 快以制胜</p>
-
 </div>
 
 </body> 
