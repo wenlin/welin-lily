@@ -4,19 +4,16 @@
 <head> 
   <meta http-equiv="Content-type" content="text/html;charset=utf-8" /> 
   <%= stylesheet_link_tag 'aegean' %>
-  <title>(<%= get_days_to_njcee() %>) 麦芒创想记忆辅助</title> 
+  <title>(<%= get_days_to_njcee() %>) 麦芒创想 CAL&E 平台</title> 
 </head> 
 <body> 
 <div id="header">
-  <h1><%= link_to "记忆点 #{get_p_current()}", :action => "index" %></h1> 
-  <span><em>当前 </em><a href="#current"><%= @memos.size %></a> / <em>延误 </em><a href="#delayed"><%= @memos_delayed.size %></a></span>
+  <h1><%= link_to "记忆辅助<sup> #{get_p_current()}</sup> ", :action => "index" %></h1> 
+  <span><a href="#current"><em>当前 </em><%= @memos.size %></a> / <a href="#delayed"><em>延误 </em><%= @memos_delayed.size %></a></span>
 </div>
 <p id="notice"><%= flash[:notice] %></p>
 <div id="content">
 <%= yield %>
 </div>
-
-<p id="footer">天道酬勤 快以制胜</p>
-
 </body> 
 </html>

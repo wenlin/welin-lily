@@ -4,19 +4,16 @@
 <head> 
   <meta http-equiv="Content-type" content="text/html;charset=utf-8" /> 
   <%= stylesheet_link_tag 'aegean' %>
-  <title>(<%= get_days_to_njcee() %>) 麦芒创想试卷管理</title> 
+  <title>(<%= get_days_to_njcee() %>) 麦芒创想 CAL&E 平台</title> 
 </head> 
 <body> 
 <div id="header">
-  <h1><%= link_to "试卷管理", :controller => "stuffs", :action => "index" %></h1> 
-  <span>当前记忆点：<%= get_p_current() %> 天</span>
+  <h1><%= link_to "试卷管理", :action => "index" %></h1> 
+  <span><%= link_to "<em>记忆点 </em>#{get_p_current()}", :controller => "memos" %></span>
 </div>
 <p id="notice"><%= flash[:notice] %></p>
 <div id="content">
 <%= yield %>
 </div>
-
-<p id="footer">天道酬勤 快以制胜</p>
-
 </body> 
 </html>

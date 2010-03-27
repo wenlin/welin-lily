@@ -18,7 +18,7 @@
   <hr />
   
   <h2 id="current">Current</h2>
-  <p class="shortcuts"><%= link_to '新建', new_memo_path %></p>
+  <p class="shortcuts"><%= link_to '新 建', new_memo_path %></p>
   <hr />
   
   <ol>
@@ -35,15 +35,16 @@
       <% end %>
     </span>
     <% end %>
+    <hr class="dotted" />
   <% end %>
   </ol>
 <% end %>
 
 
-<br /><hr />
+<hr />
 
 <h2 id="delayed">Delayed</h2>
-<p class="shortcuts"><a href="#">顶部</a></p>
+<p class="shortcuts"><a href="#">顶 部</a></p>
 <hr />
 <% if @memos_delayed.size == 0 %>
   <p style="text-align: center; padding: 8px;">太棒了，没有拖延项！</p>
@@ -62,6 +63,7 @@
         <% end %>
       <% end %>
     </span>
+    <hr class="dotted" />
   <% end %>
   </ol>
 <% end %>
