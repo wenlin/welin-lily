@@ -4,15 +4,16 @@ class MemosController < ApplicationController
   # GET /memos
   # GET /memos.xml
   def index
-    #@memos = Memo.find(:all, :conditions => {:p_next => @p_current}, :order=>'t_next DESC')
     @memos = Memo.find(:all, :conditions => ["p_next = ?", @p_current], :order=>'t_next DESC')
     @memo_focus = @memos.first
     @memos_delayed = Memo.find(:all, :conditions => ["p_next < ?", @p_current], :order=>'p_next')
 
-    @memos_all_count = Memo.count
-    @memos_today_count = Memo.find(:all, :conditions => ["p_first = ?", @p_current]).size
-    @memos_yesterday_count = Memo.find(:all, :conditions => ["p_first = ?", @p_current - 1]).size
+    @p_yesterday_last = ( 300 - @days_to_njcee) * 3
+    @p_tommorrow_last = ( 300 - @days_to_njcee) * 3 + 4
 
+    @memos_all_count = Memo.count
+    @memos_today_count = Memo.find(:all, :conditions => ["p_first > ? AND p_first < ?", @p_yesterday_last, @p_tommorrow_last]).size
+    @memos_yesterday_count = Memo.find(:all, :conditions => ["p_first > ? AND p_first < ?", @p_yesterday_last - 4, @p_yesterday_last + 1]).size
 
     respond_to do |format|
       format.html # index.html.erb

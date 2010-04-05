@@ -195,7 +195,7 @@ input.button {
   border-top: 1px solid #EAEAEA;
   border-bottom: 1px solid #EAEAEA;
   text-align: center;
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 a {
@@ -206,7 +206,7 @@ a {
 }
 
 #footer {
-  padding-top: 16px;
+  padding: 6px 0;
   color: #999;
   text-align: center;
   font-size: 12px;
