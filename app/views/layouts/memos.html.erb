@@ -9,7 +9,9 @@
 <body> 
 <div id="header">
   <h1><%= link_to "记忆辅助<small> #{get_p_current()}</small> ", :action => "index" %></h1> 
+  <% if controller.action_name != 'all' and controller.action_name != 'today' %>
   <span><a href="#current"><em>当前 </em><%= @memos.size %></a> / <a href="#delayed"><em>延误 </em><%= @memos_delayed.size %></a></span>
+  <% end %>
 </div>
 <p id="notice"><%= flash[:notice] %></p>
 <div id="content">

@@ -9,11 +9,11 @@ class MemosController < ApplicationController
     @memos_delayed = Memo.find(:all, :conditions => ["p_next < ?", @p_current], :order=>'p_next')
 
     @p_yesterday_last = ( 300 - @days_to_njcee) * 3
-    @p_tommorrow_last = ( 300 - @days_to_njcee) * 3 + 4
+    @p_tommorrow_first = ( 300 - @days_to_njcee) * 3 + 4
 
     @memos_all_count = Memo.count
-    @memos_today_count = Memo.find(:all, :conditions => ["p_first > ? AND p_first < ?", @p_yesterday_last, @p_tommorrow_last]).size
-    @memos_yesterday_count = Memo.find(:all, :conditions => ["p_first > ? AND p_first < ?", @p_yesterday_last - 4, @p_yesterday_last + 1]).size
+    @memos_today_count = Memo.find(:all, :conditions => ["p_first > ? AND p_first < ?", @p_yesterday_last, @p_tommorrow_first]).size
+    @memos_yesterday_count = Memo.find(:all, :conditions => ["p_first > ? AND p_first < ?", @p_yesterday_last - 3, @p_yesterday_last + 1]).size
 
     respond_to do |format|
       format.html # index.html.erb
@@ -33,7 +33,10 @@ class MemosController < ApplicationController
   end
 
   def today
-    @memos = Memo.find(:all, :conditions => ["p_first = ?", @p_current], :order=>'p_next')
+    @p_yesterday_last = ( 300 - @days_to_njcee) * 3
+    @p_tommorrow_first = ( 300 - @days_to_njcee) * 3 + 4
+  
+    @memos = Memo.find(:all, :conditions => ["p_first > ? AND p_first < ?", @p_yesterday_last, @p_tommorrow_first])
     @memos_delayed = Memo.find(:all, :conditions => ["p_next < ?", @p_current], :order=>'t_next DESC')
 
     respond_to do |format|
